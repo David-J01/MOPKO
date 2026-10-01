@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ===== Primary SEO ===== -->
+<title>MOPKO - AI Coach &amp; Analytics for Short-Video Creators</title>
+<meta name="description" content="MOPKO is the AI coach for short-video creators. Track performance, analyze your drafts (hook, pacing, subtitles), get a daily mission and find your best posting times.">
+<link rel="canonical" href="https://mopko.app/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="MOPKO">
+<meta name="theme-color" content="#070a14">
+<meta name="color-scheme" content="dark">
+
+<!-- ===== Open Graph ===== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPKO">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://mopko.app/">
+<meta property="og:title" content="MOPKO — AI Coach &amp; Analytics for Short-Video Creators">
+<meta property="og:description" content="Connect your account, see what actually works, and get AI-powered suggestions to improve your videos before you publish them.">
+<meta property="og:image" content="https://mopko.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MOPKO dashboard showing a video score, engagement chart and daily coaching mission">
+
+<!-- ===== Twitter / X ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MOPKO — AI Coach &amp; Analytics for Short-Video Creators">
+<meta name="twitter:description" content="Track performance, analyze your drafts, get a daily mission. The AI coach built for short-video creators.">
+<meta name="twitter:image" content="https://mopko.app/og-image.jpg">
+<meta name="twitter:site" content="@mopko">
+
+<!-- ===== Icons ===== -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ===== Fonts ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --bg:#070a14;
+  --bg-soft:#0b1020;
+  --surface:rgba(255,255,255,.035);
+  --surface-2:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.09);
+  --border-strong:rgba(255,255,255,.18);
+
+  --text:#e9edf8;
+  --muted:#98a4c0;
+
+  --brand:#7c5cff;
+  --brand-2:#22d3ee;
+  --lime:#b6ff5e;
+  --grad:linear-gradient(120deg,#7c5cff 0%,#22d3ee 100%);
+
+  --radius:18px;
+  --radius-lg:26px;
+  --maxw:1160px;
+  --shadow:0 24px 60px -24px rgba(0,0,0,.85);
+  --ring:0 0 0 3px rgba(124,92,255,.45);
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* Ambient background glow */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(760px 520px at 12% -6%, rgba(124,92,255,.30), transparent 62%),
+    radial-gradient(680px 460px at 92% 4%, rgba(34,211,238,.20), transparent 60%),
+    radial-gradient(900px 700px at 50% 108%, rgba(124,92,255,.14), transparent 65%);
+  pointer-events:none;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15;letter-spacing:-.022em;margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:10px}
+
+.wrap{width:min(100% - 40px, var(--maxw));margin-inline:auto}
+.grad-text{
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+
+/* Skip link */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--brand);color:#fff;padding:12px 18px;border-radius:0 0 12px 0;font-weight:600;
+}
+.skip:focus{left:0}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(7,10,20,.72);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;min-height:72px;
+}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:800;font-size:1.22rem;letter-spacing:-.03em;
+}
+.logo__mark{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--grad);
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px -8px rgba(124,92,255,.9);
+}
+.logo__mark svg{width:18px;height:18px}
+.nav__links{display:flex;align-items:center;gap:30px}
+.nav__links a{
+  font-size:.94rem;font-weight:500;color:var(--muted);
+  transition:color .2s ease;
+}
+.nav__links a:hover{color:var(--text)}
+.nav__cta{display:flex;align-items:center;gap:14px}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border-radius:999px;
+  font-size:.94rem;font-weight:600;letter-spacing:-.01em;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .2s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn--primary{
+  background:var(--grad);color:#080b16;
+  box-shadow:0 14px 34px -14px rgba(124,92,255,.95);
+}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 20px 44px -14px rgba(124,92,255,1)}
+.btn--ghost{
+  background:var(--surface);color:var(--text);border-color:var(--border);
+}
+.btn--ghost:hover{background:var(--surface-2);border-color:var(--border-strong);transform:translateY(-2px)}
+.btn--sm{padding:10px 18px;font-size:.88rem}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:84px 0 96px;position:relative}
+.hero__grid{
+  display:grid;grid-template-columns:1.02fr .98fr;
+  gap:64px;align-items:center;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:7px 15px 7px 11px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);
+  font-size:.82rem;font-weight:600;color:var(--muted);
+  margin-bottom:26px;
+}
+.badge__dot{
+  width:7px;height:7px;border-radius:50%;background:var(--lime);
+  box-shadow:0 0 0 4px rgba(182,255,94,.16);
+}
+.hero h1{
+  font-size:clamp(2.35rem,5.6vw,3.9rem);
+  font-weight:800;letter-spacing:-.035em;line-height:1.04;
+  margin-bottom:22px;
+}
+.hero__lead{
+  font-size:clamp(1.02rem,1.6vw,1.16rem);
+  color:var(--muted);max-width:56ch;margin-bottom:34px;
+}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.hero__note{
+  font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:8px;
+}
+.hero__note svg{width:15px;height:15px;flex:none;color:var(--lime)}
+
+/* ---- Dashboard mockup ---- */
+.mock{
+  border-radius:var(--radius-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  transform:perspective(1400px) rotateY(-7deg) rotateX(3deg);
+  transition:transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.mock:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+.mock__top{
+  display:flex;align-items:center;gap:7px;
+  padding:13px 16px;border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+}
+.mock__top i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.16);display:block}
+.mock__url{
+  margin-left:12px;font-size:.75rem;color:var(--muted);
+  background:rgba(255,255,255,.05);padding:4px 12px;border-radius:999px;
+}
+.mock__body{padding:20px;display:grid;gap:14px}
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:18px;
+}
+.card--score{display:flex;align-items:center;gap:20px}
+.ring{width:92px;height:92px;flex:none;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring__bg{stroke:rgba(255,255,255,.08)}
+.ring__fg{stroke:url(#ringGrad);stroke-dasharray:264;stroke-dashoffset:34}
+.k-label{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
+.k-big{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.k-big span{font-size:.95rem;color:var(--muted);font-weight:500}
+.k-up{font-size:.8rem;color:var(--lime);font-weight:600}
+.bars{display:flex;align-items:flex-end;gap:8px;height:74px;margin-top:14px}
+.bars span{
+  flex:1;height:var(--h);border-radius:6px 6px 3px 3px;
+  background:linear-gradient(180deg,rgba(124,92,255,.95),rgba(34,211,238,.55));
+  opacity:.9;
+}
+.bars span:nth-child(even){background:linear-gradient(180deg,rgba(34,211,238,.9),rgba(124,92,255,.4))}
+.pill{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:#080b16;background:var(--lime);
+  padding:4px 11px;border-radius:999px;margin-bottom:10px;
+}
+.card--mission p{font-size:.94rem;color:var(--text);font-weight:500}
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.platforms{
+  border-block:1px solid var(--border);
+  background:rgba(255,255,255,.015);
+  padding:26px 0;
+}
+.platforms__inner{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:16px 34px;text-align:center;
+}
+.platforms__label{
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--muted);font-weight:600;
+}
+.platforms__list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.chip{
+  font-size:.86rem;font-weight:600;color:var(--muted);
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{padding:96px 0}
+.section--tight{padding:80px 0}
+.section__head{max-width:660px;margin-bottom:54px}
+.eyebrow{
+  font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--brand-2);margin-bottom:14px;display:block;
+}
+.section__head h2{
+  font-size:clamp(1.75rem,3.6vw,2.5rem);font-weight:800;
+  margin-bottom:16px;
+}
+.section__head p{color:var(--muted);font-size:1.03rem}
+
+/* ---- Features ---- */
+.grid-features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:20px;
+}
+.feature{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px 26px;
+  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+  position:relative;overflow:hidden;
+}
+.feature::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(340px 180px at 100% 0%,rgba(124,92,255,.16),transparent 70%);
+  opacity:0;transition:opacity .35s ease;
+}
+.feature:hover{transform:translateY(-5px);border-color:var(--border-strong);background:var(--surface-2)}
+.feature:hover::after{opacity:1}
+.feature__icon{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(140deg,rgba(124,92,255,.28),rgba(34,211,238,.18));
+  border:1px solid rgba(124,92,255,.35);
+  margin-bottom:20px;color:#cfc6ff;
+}
+.feature__icon svg{width:22px;height:22px}
+.feature h3{font-size:1.06rem;font-weight:700;margin-bottom:9px}
+.feature p{color:var(--muted);font-size:.94rem}
+
+/* ---- Steps ---- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;counter-reset:step}
+.step{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:30px 26px;position:relative;
+}
+.step__num{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  font-weight:800;font-size:.95rem;color:#080b16;background:var(--grad);
+  margin-bottom:20px;
+}
+.step h3{font-size:1.05rem;font-weight:700;margin-bottom:9px}
+.step p{color:var(--muted);font-size:.94rem}
+
+/* ---- Privacy band ---- */
+.band{
+  border:1px solid var(--border);border-radius:var(--radius-lg);
+  background:linear-gradient(140deg,rgba(124,92,255,.14),rgba(34,211,238,.07));
+  padding:clamp(30px,5vw,52px);
+  display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;
+}
+.band h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;margin-bottom:12px}
+.band p{color:var(--muted);max-width:58ch}
+.band ul{display:grid;gap:10px;margin-top:18px}
+.band li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.94rem;color:var(--text);
+}
+.band li svg{width:17px;height:17px;color:var(--lime);flex:none;margin-top:4px}
+
+/* ---- FAQ ---- */
+.faq{display:grid;gap:12px;max-width:820px}
+.faq details{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:0;overflow:hidden;
+  transition:border-color .25s ease, background .25s ease;
+}
+.faq details[open]{background:var(--surface-2);border-color:var(--border-strong)}
+.faq summary{
+  cursor:pointer;list-style:none;
+  padding:20px 24px;font-weight:600;font-size:1rem;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";width:11px;height:11px;flex:none;
+  border-right:2px solid var(--brand-2);border-bottom:2px solid var(--brand-2);
+  transform:rotate(45deg);transition:transform .25s ease;margin-top:-4px;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+.faq__answer{padding:0 24px 22px;color:var(--muted);font-size:.95rem}
+
+/* ---- Final CTA ---- */
+.cta{
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:
+    radial-gradient(520px 260px at 50% 0%,rgba(124,92,255,.30),transparent 70%),
+    var(--surface);
+  padding:clamp(40px,7vw,72px) clamp(22px,5vw,56px);
+}
+.cta h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;margin-bottom:16px}
+.cta p{color:var(--muted);max-width:52ch;margin:0 auto 30px}
+.cta__actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  border-top:1px solid var(--border);
+  background:rgba(255,255,255,.015);
+  padding:60px 0 34px;margin-top:20px;
+}
+.footer__grid{
+  display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;
+  padding-bottom:44px;border-bottom:1px solid var(--border);
+}
+.footer__brand p{color:var(--muted);font-size:.92rem;max-width:36ch;margin-top:16px}
+.footer__col h3{
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--muted);font-weight:700;margin-bottom:16px;
+}
+.footer__col ul{display:grid;gap:11px}
+.footer__col a{font-size:.93rem;color:var(--text);opacity:.85;transition:opacity .2s,color .2s}
+.footer__col a:hover{opacity:1;color:var(--brand-2)}
+.footer__bottom{
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+  padding-top:26px;font-size:.85rem;color:var(--muted);
+}
+.footer__bottom nav{display:flex;flex-wrap:wrap;gap:20px}
+.footer__bottom a:hover{color:var(--text)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .hero__grid{grid-template-columns:1fr;gap:52px}
+  .mock{transform:none}
+  .band{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav__links{display:none}
+  .nav__cta .btn--ghost{display:none}
+  .hero{padding:56px 0 68px}
+  .section{padding:70px 0}
+  .section--tight{padding:58px 0}
+  .footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .mock{transform:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===================== SVG SPRITE (icons) ===================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3.5-4 3 2.5L20 7"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.2-4.4A8 8 0 1 1 21 12Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="/" aria-label="MOPKO — home">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#080b16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+        </span>
+        MOPKO
+      </a>
+
+      <div class="nav__links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost btn--sm" href="#faq">Learn more</a>
+        <a class="btn btn--primary btn--sm" href="#get-started">Get early access</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="badge"><span class="badge__dot" aria-hidden="true"></span> Now in early access</p>
+
+        <h1 id="hero-title">
+          The AI coach that makes every <span class="grad-text">short video</span> better.
+        </h1>
+
+        <p class="hero__lead">
+          MOPKO is an analytics and coaching app for short-video creators. Connect your account
+          and get clear insights on what works, a daily mission, better posting times, and
+          AI-powered suggestions to improve your videos <strong>before</strong> you publish them.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#get-started">
+            Get early access
+            <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#features">See what it does</a>
+        </div>
+
+        <p class="hero__note">
+          <svg aria-hidden="true"><use href="#i-check"/></svg>
+          Read-only access · No credit card · Cancel anytime
+        </p>
+      </div>
+
+      <!-- Dashboard preview -->
+      <div class="mock" role="img"
+           aria-label="Preview of the MOPKO dashboard: a video score of 87 out of 100, an engagement chart by hook, and today's coaching mission.">
+        <div class="mock__top" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <span class="mock__url">mopko.app/dashboard</span>
+        </div>
+        <div class="mock__body">
+          <div class="card card--score">
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring__bg" cx="50" cy="50" r="42"/>
+              <circle class="ring__fg" cx="50" cy="50" r="42"/>
+            </svg>
+            <div>
+              <p class="k-label">Video score</p>
+              <p class="k-big">87<span>/100</span></p>
+              <p class="k-up">▲ +12 vs last week</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <p class="k-label">Retention by hook</p>
+            <div class="bars" aria-hidden="true">
+              <span style="--h:46%"></span>
+              <span style="--h:68%"></span>
+              <span style="--h:55%"></span>
+              <span style="--h:82%"></span>
+              <span style="--h:61%"></span>
+              <span style="--h:94%"></span>
+              <span style="--h:72%"></span>
+            </div>
+          </div>
+
+          <div class="card card--mission">
+            <span class="pill">Today's mission</span>
+            <p>Cut your first 3 seconds down to a single, clear promise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLATFORMS ===================== -->
+  <section class="platforms" aria-label="Supported platforms">
+    <div class="wrap platforms__inner">
+      <p class="platforms__label">Works with</p>
+      <ul class="platforms__list">
+        <li class="chip">TikTok</li>
+        <li class="chip">Instagram Reels</li>
+        <li class="chip">YouTube Shorts</li>
+        <li class="chip">Snapchat Spotlight</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Features</span>
+        <h2 id="features-title">Everything you need to grow - in one place</h2>
+        <p>Stop guessing why a video flopped. MOPKO turns your own data into decisions you can act on today.</p>
+      </div>
+
+      <div class="grid-features">
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-chart"/></svg></div>
+          <h3>Performance tracking over time</h3>
+          <p>Follow views, retention, watch time and engagement for every video you post, and spot the trends that actually move your account forward.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-sparkle"/></svg></div>
+          <h3>AI analysis of your drafts</h3>
+          <p>Upload a draft and get structured feedback on your hook, pacing, subtitles and structure - before you publish, not after.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-target"/></svg></div>
+          <h3>Daily coaching missions</h3>
+          <p>One clear, achievable action per day, based on your own performance. Small consistent improvements beat random experiments.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-clock"/></svg></div>
+          <h3>Better posting times</h3>
+          <p>See when your audience is actually watching and get time slots tailored to your account, not generic global averages.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-chat"/></svg></div>
+          <h3>Comment &amp; feedback analysis</h3>
+          <p>Understand what your audience asks for, what they love and what confuses them - extracted automatically from your comments.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icon" aria-hidden="true"><svg><use href="#i-bolt"/></svg></div>
+          <h3>Weekly reports</h3>
+          <p>A short, readable recap every week: what worked, what didn't, and what to focus on next. No dashboards to decode.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section section--tight" id="how-it-works" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">How it works</span>
+        <h2 id="how-title">Set up in under two minutes</h2>
+        <p>No editing workflow to change. MOPKO plugs into what you already do.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step__num" aria-hidden="true">1</div>
+          <h3>Connect your account</h3>
+          <p>Authorize read-only access to your creator account. MOPKO never posts, edits or deletes anything on your behalf.</p>
+        </article>
+
+        <article class="step">
+          <div class="step__num" aria-hidden="true">2</div>
+          <h3>Get your analysis</h3>
+          <p>We map your last videos, find your strongest patterns and give you a daily mission plus your best posting windows.</p>
+        </article>
+
+        <article class="step">
+          <div class="step__num" aria-hidden="true">3</div>
+          <h3>Improve and repeat</h3>
+          <p>Submit drafts for AI feedback, publish with confidence, and watch your score climb week after week.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRIVACY ===================== -->
+  <section class="section section--tight" id="privacy" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <span class="eyebrow">Privacy first</span>
+          <h2 id="privacy-title">Your data stays yours</h2>
+          <p>MOPKO only reads data that you explicitly authorize. It never posts on your behalf and never sells your data.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> Read-only access to your connected accounts</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> Revoke access at any time, in one click</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg> No posting, no messaging, no automated actions</li>
+          </ul>
+        </div>
+        <div>
+          <a class="btn btn--ghost" href="privacy.html">
+            Read the Privacy Policy
+            <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section section--tight" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Everything you might want to know before connecting your account.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>What exactly is MOPKO?</summary>
+          <div class="faq__answer">
+            <p>MOPKO is an analytics and coaching app for short-video creators. It combines your own performance data with AI analysis to tell you what to improve, when to post, and what to work on next.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Does MOPKO post on my behalf?</summary>
+          <div class="faq__answer">
+            <p>No. MOPKO only reads data that you authorize. It never publishes, edits, deletes or sends anything on your behalf.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Which platforms are supported?</summary>
+          <div class="faq__answer">
+            <p>MOPKO works with TikTok, Instagram Reels, YouTube Shorts and Snapchat Spotlight. Support for additional platforms is added regularly during early access.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How does the AI draft analysis work?</summary>
+          <div class="faq__answer">
+            <p>You upload a draft video and MOPKO reviews its hook, pacing, subtitles, structure and clarity. You get concrete, actionable suggestions you can apply before publishing - not a vague score.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I revoke access to my accounts?</summary>
+          <div class="faq__answer">
+            <p>Yes, at any time. You can disconnect a platform from your settings in one click, and the associated data is deleted according to our Privacy Policy.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Is MOPKO free?</summary>
+          <div class="faq__answer">
+            <p>MOPKO is currently in early access. Join the waitlist to be notified when accounts open and to receive founding-member pricing.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="section section--tight" id="get-started" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta">
+        <h2 id="cta-title">Start improving your next video today</h2>
+        <p>Join the early access list and be among the first creators to get their MOPKO coaching dashboard.</p>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:hello@mopko.app?subject=MOPKO%20early%20access">
+            Get early access
+            <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#features">Explore features</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="/" aria-label="MOPKO — home">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#080b16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+          </span>
+          MOPKO
+        </a>
+        <p>The AI coach and analytics app built for short-video creators.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Product">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#get-started">Early access</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@mopko.app">hello@mopko.app</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year">2025</span> MOPKO. All rights reserved.</p>
+      <nav aria-label="Social links">
+        <a href="https://twitter.com/mopko" rel="noopener">X / Twitter</a>
+        <a href="https://instagram.com/mopko" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@mopko" rel="noopener">TikTok</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== STRUCTURED DATA ===================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mopko.app/#website",
+      "url": "https://mopko.app/",
+      "name": "MOPKO",
+      "description": "AI coach and analytics app for short-video creators.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://mopko.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mopko.app/#organization",
+      "name": "MOPKO",
+      "url": "https://mopko.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mopko.app/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "hello@mopko.app",
+      "sameAs": [
+        "https://twitter.com/mopko",
+        "https://instagram.com/mopko",
+        "https://tiktok.com/@mopko"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://mopko.app/#app",
+      "name": "MOPKO",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Analytics & Coaching",
+      "operatingSystem": "Web, iOS, Android",
+      "url": "https://mopko.app/",
+      "description": "MOPKO is an analytics and coaching app for short-video creators. Connect your account to track performance, get AI analysis of your drafts, a daily mission, better posting times and weekly reports.",
+      "featureList": [
+        "Performance tracking of your own videos over time",
+        "AI analysis of draft videos (hook, pacing, subtitles)",
+        "Daily coaching missions and weekly reports",
+        "Comment and feedback analysis",
+        "Best posting times tailored to your audience"
+      ],
+      "publisher": { "@id": "https://mopko.app/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mopko.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly is MOPKO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MOPKO is an analytics and coaching app for short-video creators. It combines your own performance data with AI analysis to tell you what to improve, when to post, and what to work on next."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MOPKO post on my behalf?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MOPKO only reads data that you authorize. It never publishes, edits, deletes or sends anything on your behalf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which platforms are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MOPKO works with TikTok, Instagram Reels, YouTube Shorts and Snapchat Spotlight. Support for additional platforms is added regularly during early access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the AI draft analysis work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You upload a draft video and MOPKO reviews its hook, pacing, subtitles, structure and clarity. You get concrete, actionable suggestions you can apply before publishing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I revoke access to my accounts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, at any time. You can disconnect a platform from your settings in one click, and the associated data is deleted according to our Privacy Policy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MOPKO free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MOPKO is currently in early access. Join the waitlist to be notified when accounts open and to receive founding-member pricing."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
