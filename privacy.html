@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ===== Primary SEO ===== -->
+<title>Privacy Policy - MOPKO | Data, TikTok API &amp; AI Processing</title>
+<meta name="description" content="MOPKO Privacy Policy: what data we access through TikTok's official APIs, how we use it, AI processing, storage, retention, deletion and your rights.">
+<link rel="canonical" href="https://mopko.app/privacy.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="MOPKO">
+<meta name="theme-color" content="#070a14">
+<meta name="color-scheme" content="dark">
+
+<!-- ===== Open Graph ===== -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MOPKO">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://mopko.app/privacy.html">
+<meta property="og:title" content="Privacy Policy — MOPKO">
+<meta property="og:description" content="What data MOPKO accesses, how it's used, AI processing, storage, retention and how to delete your data.">
+<meta property="og:image" content="https://mopko.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- ===== Twitter / X ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — MOPKO">
+<meta name="twitter:description" content="What data MOPKO accesses, how it's used, AI processing, storage, retention and how to delete your data.">
+<meta name="twitter:image" content="https://mopko.app/og-image.jpg">
+<meta name="twitter:site" content="@mopko">
+
+<!-- ===== Icons ===== -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ===== Fonts ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --bg:#070a14;
+  --bg-soft:#0b1020;
+  --surface:rgba(255,255,255,.035);
+  --surface-2:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.09);
+  --border-strong:rgba(255,255,255,.18);
+
+  --text:#e9edf8;
+  --muted:#98a4c0;
+
+  --brand:#7c5cff;
+  --brand-2:#22d3ee;
+  --lime:#b6ff5e;
+  --grad:linear-gradient(120deg,#7c5cff 0%,#22d3ee 100%);
+
+  --radius:18px;
+  --radius-lg:26px;
+  --maxw:1160px;
+  --shadow:0 24px 60px -24px rgba(0,0,0,.85);
+  --ring:0 0 0 3px rgba(124,92,255,.45);
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  margin:0;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.68;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(760px 520px at 10% -8%, rgba(124,92,255,.26), transparent 62%),
+    radial-gradient(680px 460px at 94% 2%, rgba(34,211,238,.16), transparent 60%),
+    radial-gradient(900px 700px at 50% 110%, rgba(124,92,255,.12), transparent 65%);
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.2;letter-spacing:-.022em;margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:10px}
+
+.wrap{width:min(100% - 40px, var(--maxw));margin-inline:auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--brand);color:#fff;padding:12px 18px;
+  border-radius:0 0 12px 0;font-weight:600;
+}
+.skip:focus{left:0}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(7,10,20,.72);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;min-height:72px;
+}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:800;font-size:1.22rem;letter-spacing:-.03em;
+}
+.logo__mark{
+  width:32px;height:32px;border-radius:10px;background:var(--grad);
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px -8px rgba(124,92,255,.9);
+}
+.logo__mark svg{width:18px;height:18px}
+.nav__links{display:flex;align-items:center;gap:30px}
+.nav__links a{font-size:.94rem;font-weight:500;color:var(--muted);transition:color .2s ease}
+.nav__links a:hover,.nav__links a[aria-current="page"]{color:var(--text)}
+.nav__cta{display:flex;align-items:center;gap:14px}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border-radius:999px;
+  font-size:.94rem;font-weight:600;letter-spacing:-.01em;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .2s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn--primary{
+  background:var(--grad);color:#080b16;
+  box-shadow:0 14px 34px -14px rgba(124,92,255,.95);
+}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 20px 44px -14px rgba(124,92,255,1)}
+.btn--ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
+.btn--ghost:hover{background:var(--surface-2);border-color:var(--border-strong);transform:translateY(-2px)}
+.btn--sm{padding:10px 18px;font-size:.88rem}
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.page-hero{
+  padding:60px 0 40px;
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.012);
+}
+.crumbs{
+  display:flex;flex-wrap:wrap;align-items:center;gap:9px;
+  font-size:.84rem;color:var(--muted);margin-bottom:22px;
+}
+.crumbs a{transition:color .2s ease}
+.crumbs a:hover{color:var(--text)}
+.crumbs span[aria-hidden]{opacity:.45}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.76rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--brand-2);margin-bottom:16px;
+}
+.page-hero h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  font-weight:800;letter-spacing:-.035em;margin-bottom:18px;
+}
+.page-hero__lead{
+  color:var(--muted);font-size:clamp(1rem,1.6vw,1.1rem);
+  max-width:66ch;margin-bottom:26px;
+}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 15px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);
+  font-size:.83rem;font-weight:600;color:var(--muted);
+}
+.meta-chip svg{width:15px;height:15px;flex:none;color:var(--brand-2)}
+
+/* ============================================================
+   LAYOUT : TOC + CONTENT
+   ============================================================ */
+.doc{
+  display:grid;
+  grid-template-columns:262px 1fr;
+  gap:56px;
+  padding:56px 0 96px;
+  align-items:start;
+}
+
+/* ---- Table of contents ---- */
+.toc{
+  position:sticky;top:100px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:var(--surface);
+  padding:22px;
+}
+.toc h2{
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--muted);font-weight:700;margin-bottom:16px;
+}
+.toc ol{
+  list-style:none;counter-reset:toc;
+  display:grid;gap:2px;
+}
+.toc a{
+  display:flex;gap:11px;align-items:baseline;
+  padding:9px 11px;border-radius:10px;
+  font-size:.9rem;color:var(--muted);font-weight:500;
+  transition:background .2s ease,color .2s ease;
+}
+.toc a::before{
+  counter-increment:toc;content:counter(toc,decimal-leading-zero);
+  font-size:.72rem;font-weight:700;color:var(--brand-2);opacity:.8;
+  font-variant-numeric:tabular-nums;
+}
+.toc a:hover{background:var(--surface-2);color:var(--text)}
+.toc__foot{
+  margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+  font-size:.83rem;color:var(--muted);
+}
+.toc__foot a{color:var(--brand-2);font-weight:600}
+.toc__foot a:hover{text-decoration:underline}
+
+/* ---- Content column ---- */
+.doc__body{max-width:76ch;min-width:0}
+
+.intro-card{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(140deg,rgba(124,92,255,.13),rgba(34,211,238,.06));
+  padding:24px 26px;margin-bottom:40px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.intro-card svg{width:22px;height:22px;flex:none;color:var(--brand-2);margin-top:3px}
+.intro-card p{font-size:.97rem;color:var(--text)}
+
+.policy-section{
+  padding-top:34px;
+  scroll-margin-top:100px;
+}
+.policy-section + .policy-section{border-top:1px solid var(--border);margin-top:34px}
+.policy-section h2{
+  font-size:clamp(1.2rem,2.2vw,1.42rem);
+  font-weight:700;margin-bottom:16px;
+  display:flex;gap:14px;align-items:baseline;
+}
+.policy-section h2 .num{
+  font-size:.8rem;font-weight:800;letter-spacing:.06em;
+  color:#080b16;background:var(--grad);
+  min-width:30px;height:30px;padding:0 9px;border-radius:9px;
+  display:inline-grid;place-items:center;flex:none;
+  transform:translateY(-1px);
+}
+.policy-section p{color:var(--muted);margin-bottom:14px}
+.policy-section p:last-child{margin-bottom:0}
+.policy-section strong{color:var(--text);font-weight:600}
+
+/* Data list */
+.data-list{display:grid;gap:10px;margin:18px 0 16px}
+.data-list li{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:14px 17px;border-radius:13px;
+  background:var(--surface);border:1px solid var(--border);
+  font-size:.94rem;color:var(--muted);
+  transition:border-color .25s ease,background .25s ease;
+}
+.data-list li:hover{border-color:var(--border-strong);background:var(--surface-2)}
+.data-list svg{width:16px;height:16px;flex:none;color:var(--brand-2);margin-top:5px}
+
+/* Callout */
+.callout{
+  display:flex;gap:14px;align-items:flex-start;
+  border:1px solid rgba(182,255,94,.28);
+  background:rgba(182,255,94,.06);
+  border-radius:14px;padding:18px 20px;margin-top:20px;
+}
+.callout svg{width:19px;height:19px;flex:none;color:var(--lime);margin-top:3px}
+.callout p{color:var(--text);font-size:.94rem;margin:0}
+
+/* Contact card */
+.contact-card{
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--surface);padding:26px;
+  display:flex;flex-wrap:wrap;gap:20px;
+  justify-content:space-between;align-items:center;
+  margin-top:22px;
+}
+.contact-card p{font-size:.94rem;color:var(--muted);margin:0}
+.contact-card a.mail{
+  font-weight:700;font-size:1.02rem;color:var(--brand-2);
+  word-break:break-all;
+}
+.contact-card a.mail:hover{text-decoration:underline}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  border-top:1px solid var(--border);
+  background:rgba(255,255,255,.015);
+  padding:60px 0 34px;
+}
+.footer__grid{
+  display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;
+  padding-bottom:44px;border-bottom:1px solid var(--border);
+}
+.footer__brand p{color:var(--muted);font-size:.92rem;max-width:36ch;margin-top:16px}
+.footer__col h3{
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--muted);font-weight:700;margin-bottom:16px;
+}
+.footer__col ul{display:grid;gap:11px}
+.footer__col a{font-size:.93rem;color:var(--text);opacity:.85;transition:opacity .2s,color .2s}
+.footer__col a:hover{opacity:1;color:var(--brand-2)}
+.footer__bottom{
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+  padding-top:26px;font-size:.85rem;color:var(--muted);
+}
+.footer__bottom nav{display:flex;flex-wrap:wrap;gap:20px}
+.footer__bottom a:hover{color:var(--text)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:980px){
+  .doc{grid-template-columns:1fr;gap:38px;padding:42px 0 72px}
+  .toc{position:static;top:auto}
+  .toc ol{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav__links{display:none}
+  .nav__cta .btn--ghost{display:none}
+  .page-hero{padding:44px 0 32px}
+  .footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+  .contact-card{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){
+  .toc ol{grid-template-columns:1fr}
+  .policy-section h2{flex-direction:column;gap:10px;align-items:flex-start}
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===================== SVG SPRITE ===================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="MOPKO — home">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#080b16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+        </span>
+        MOPKO
+      </a>
+
+      <div class="nav__links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost btn--sm" href="terms.html">Terms</a>
+        <a class="btn btn--primary btn--sm" href="index.html#get-started">Get early access</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Privacy Policy</span>
+      </nav>
+
+      <p class="eyebrow"><svg width="15" height="15" aria-hidden="true"><use href="#i-shield"/></svg> Legal</p>
+
+      <h1 id="page-title">Privacy <span class="grad-text">Policy</span></h1>
+
+      <p class="page-hero__lead">
+        MOPKO ("we", "the app") is an analytics and coaching tool for short-video creators.
+        This policy explains what data we handle, why we handle it, and how you stay in control.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip"><svg aria-hidden="true"><use href="#i-calendar"/></svg> Last updated: September 30, 2026</span>
+        <span class="meta-chip"><svg aria-hidden="true"><use href="#i-lock"/></svg> Read-only access</span>
+        <span class="meta-chip"><svg aria-hidden="true"><use href="#i-check"/></svg> We never post for you</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DOCUMENT ===================== -->
+  <div class="wrap doc">
+
+    <!-- ---- Table of contents ---- -->
+    <aside class="toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">On this page</h2>
+      <ol>
+        <li><a href="#data-we-access">Data we access</a></li>
+        <li><a href="#how-we-use-it">How we use it</a></li>
+        <li><a href="#ai-processing">AI processing</a></li>
+        <li><a href="#storage-security">Storage &amp; security</a></li>
+        <li><a href="#retention-deletion">Retention &amp; deletion</a></li>
+        <li><a href="#sharing">Sharing</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+      <p class="toc__foot">Questions about your data? <a href="mailto:mopkosupport@gmail.com">Email us</a>.</p>
+    </aside>
+
+    <!-- ---- Content ---- -->
+    <article class="doc__body">
+
+      <div class="intro-card">
+        <svg aria-hidden="true"><use href="#i-info"/></svg>
+        <p>
+          MOPKO only reads data that you explicitly authorize, through official platform APIs.
+          We never post, comment, like or follow on your behalf, we never use your data for
+          advertising, and we never sell it.
+        </p>
+      </div>
+
+      <!-- 1 -->
+      <section class="policy-section" id="data-we-access" aria-labelledby="h-data">
+        <h2 id="h-data"><span class="num">01</span> Data we access</h2>
+        <p>
+          When you choose to connect your TikTok account, and only with your consent, we access
+          the following through TikTok's official APIs:
+        </p>
+        <ul class="data-list">
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span><strong>Basic profile information</strong> - unique account identifier, display name, username and avatar.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span><strong>Account statistics</strong> - follower, following, likes and video counts.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span><strong>Your video list and public metrics</strong> - title, cover, duration, views, likes, comments and shares.</span></li>
+        </ul>
+        <p>
+          You may also upload files yourself: statistics exports from TikTok Studio, draft videos
+          for analysis, and comments you wish to analyze.
+        </p>
+      </section>
+
+      <!-- 2 -->
+      <section class="policy-section" id="how-we-use-it" aria-labelledby="h-use">
+        <h2 id="h-use"><span class="num">02</span> How we use it</h2>
+        <ul class="data-list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>To display your performance and its evolution over time.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>To generate AI-based analyses, recommendations, daily missions and reports for your account.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>To improve the app - for example, by analyzing the feedback you send us about MOPKO.</span></li>
+        </ul>
+        <div class="callout">
+          <svg aria-hidden="true"><use href="#i-shield"/></svg>
+          <p>We do not post, comment, like or follow on your behalf. We do not use your data for advertising, and we do not sell it.</p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="policy-section" id="ai-processing" aria-labelledby="h-ai">
+        <h2 id="h-ai"><span class="num">03</span> AI processing</h2>
+        <p>
+          To produce suggestions, we send summarized data - statistics, transcripts or key
+          elements of a draft video - to an AI service provider. We send only what is needed
+          for the requested analysis.
+        </p>
+      </section>
+
+      <!-- 4 -->
+      <section class="policy-section" id="storage-security" aria-labelledby="h-storage">
+        <h2 id="h-storage"><span class="num">04</span> Storage and security</h2>
+        <p>
+          Data is stored on a managed cloud database. Access tokens issued by TikTok are stored
+          server-side only and are never exposed to the app or to other users. Each user can only
+          access their own data.
+        </p>
+      </section>
+
+      <!-- 5 -->
+      <section class="policy-section" id="retention-deletion" aria-labelledby="h-retention">
+        <h2 id="h-retention"><span class="num">05</span> Retention and deletion</h2>
+        <p>
+          We keep your data while your account is active. You can disconnect your TikTok account
+          at any time in the app, or revoke MOPKO's access from your TikTok settings.
+        </p>
+        <p>
+          To delete your account and all associated data, contact us at the address below and we
+          will process the request within a reasonable time.
+        </p>
+      </section>
+
+      <!-- 6 -->
+      <section class="policy-section" id="sharing" aria-labelledby="h-sharing">
+        <h2 id="h-sharing"><span class="num">06</span> Sharing</h2>
+        <p>
+          We share data only with the infrastructure and AI providers needed to operate the
+          service, or when the law requires it.
+        </p>
+      </section>
+
+      <!-- 7 -->
+      <section class="policy-section" id="children" aria-labelledby="h-children">
+        <h2 id="h-children"><span class="num">07</span> Children</h2>
+        <p>
+          MOPKO is not intended for children under 13, and we do not knowingly collect their data.
+        </p>
+      </section>
+
+      <!-- 8 -->
+      <section class="policy-section" id="changes" aria-labelledby="h-changes">
+        <h2 id="h-changes"><span class="num">08</span> Changes</h2>
+        <p>
+          We may update this policy. The date at the top of this page shows the latest version.
+        </p>
+      </section>
+
+      <!-- 9 -->
+      <section class="policy-section" id="contact" aria-labelledby="h-contact">
+        <h2 id="h-contact"><span class="num">09</span> Contact</h2>
+        <p>For any question about this policy or your personal data:</p>
+        <div class="contact-card">
+          <p>Privacy &amp; data requests</p>
+          <a class="mail" href="mailto:mopkosupport@gmail.com">mopkosupport@gmail.com</a>
+        </div>
+      </section>
+
+      <!-- Back links -->
+      <p style="margin-top:48px;padding-top:26px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:14px">
+        <a class="btn btn--ghost btn--sm" href="index.html">
+          <svg width="15" height="15" aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-arrow"/></svg>
+          Back to home
+        </a>
+        <a class="btn btn--ghost btn--sm" href="terms.html">
+          Terms of Service
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </p>
+
+    </article>
+  </div>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="index.html" aria-label="MOPKO — home">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#080b16" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+          </span>
+          MOPKO
+        </a>
+        <p>The AI coach and analytics app built for short-video creators.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Product">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How it works</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#get-started">Early access</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:mopkosupport@gmail.com">mopkosupport@gmail.com</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year">2026</span> MOPKO. All rights reserved.</p>
+      <nav aria-label="Social links">
+        <a href="https://twitter.com/mopko" rel="noopener">X / Twitter</a>
+        <a href="https://instagram.com/mopko" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@mopko" rel="noopener">TikTok</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== STRUCTURED DATA ===================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mopko.app/#website",
+      "url": "https://mopko.app/",
+      "name": "MOPKO",
+      "description": "AI coach and analytics app for short-video creators.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://mopko.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mopko.app/#organization",
+      "name": "MOPKO",
+      "url": "https://mopko.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mopko.app/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "mopkosupport@gmail.com",
+      "sameAs": [
+        "https://twitter.com/mopko",
+        "https://instagram.com/mopko",
+        "https://tiktok.com/@mopko"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mopko.app/privacy.html#webpage",
+      "url": "https://mopko.app/privacy.html",
+      "name": "Privacy Policy - MOPKO",
+      "description": "MOPKO Privacy Policy: what data we access through TikTok's official APIs, how we use it, AI processing, storage, retention, deletion and your rights.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://mopko.app/#website" },
+      "about": { "@id": "https://mopko.app/#app" },
+      "dateModified": "2026-07-30",
+      "datePublished": "2026-07-30",
+      "breadcrumb": { "@id": "https://mopko.app/privacy.html#breadcrumb" },
+      "publisher": { "@id": "https://mopko.app/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mopko.app/privacy.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mopko.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://mopko.app/privacy.html"
+        }
+      ]
+    },
+    {
+      "@type": "PrivacyPolicy",
+      "@id": "https://mopko.app/privacy.html#policy",
+      "name": "MOPKO Privacy Policy",
+      "url": "https://mopko.app/privacy.html",
+      "dateModified": "2026-07-30",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://mopko.app/privacy.html#webpage" },
+      "publisher": { "@id": "https://mopko.app/#organization" }
+    }
+  ]
+}
+</script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
